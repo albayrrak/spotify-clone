@@ -5,8 +5,15 @@ import { useUser } from '@/hooks/useUsers'
 import React from 'react'
 import { AiOutlinePlus } from 'react-icons/ai'
 import { TbPlaylist } from 'react-icons/tb'
+import { Song } from '../../../../types'
+import MediaItem from '../media-item'
 
-const Library = () => {
+
+interface IProps {
+    songs: Song[]
+}
+
+const Library: React.FC<IProps> = ({ songs }) => {
     const authModal = useAuthModal()
     const uploadModal = useUploadModal()
     const { user } = useUser()
@@ -31,7 +38,14 @@ const Library = () => {
                 <AiOutlinePlus className='text-neutral-400 cursor-pointer hover:text-white transition' onClick={onClick} size={20} />
             </div>
             <div className='flex flex-col gap-y-2 mt-4 px-3'>
-                List of songs
+                {songs.map(item =>
+                    <MediaItem
+                        onClick={() => { }}
+                        key={item.id}
+                        data={item}
+                    />
+
+                )}
             </div>
         </div>
     )
