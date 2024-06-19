@@ -22,7 +22,7 @@ export interface IProps {
 export const MyUserContextProvider = (props: IProps) => {
     const { session, isLoading: isLoadingUser, supabaseClient: supabase } = useSessionContext()
 
-    const user = useSupaUser
+    const user = useSupaUser()
 
     const accesstoken = session?.access_token ?? null;
     const [isLoadingData, setIsLoadingData] = useState(false);
